@@ -132,7 +132,7 @@ namespace TestareManual
             string[] rows = x.Split(new string[] { "TestResults" }, StringSplitOptions.None);
             String TestProjectPath = rows[0].ToString() + @"TestareManual\Resources\test.jpg";
 
-            WinWindow UploadWindow = new WinWindow();
+            WinWindow UploadWindow = new WinWindow(this.browser);
             UploadWindow.SearchProperties.Add("Name", "Open");
             UploadWindow.WaitForControlExist();
 

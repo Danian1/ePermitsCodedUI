@@ -261,19 +261,49 @@ namespace TestareManual
             option.InputText( "PaymentConditions", TestContext.DataRow["PaymentCond"].ToString());
 
             //Payment currency
-            option.lookup( "PaymentCurrency", 1);
-
-            //Importing Country(Africa de Sud)
-            option.lookup( "ImportingCountry", 2);
-
-            //Paying Country(Afganistan)
-            option.lookup( "PayingCountry", 1);
-
-            //Destination Country(Albania)
-            option.lookup( "DestinationCountry", 3);
+            option.lookup("PaymentCurrency", 1);
 
             //Exporting Country(Africa de Sud)
-            option.lookup( "ExportingCountry", 2);
+            option.lookup("ExportingCountry", 2);
+
+            //Paying Country(Afganistan)
+            option.lookup("PayingCountry", 1);
+
+            //Destination Country(Albania)
+            option.lookup("DestinationCountry", 3);
+
+            //Origin country(Africa de Sud)
+            option.lookup("OriginCountry", 2);
+
+
+            //Click Add Product
+            string addProduct = "div.panel-header.grid-header button";
+            option.WaitForExists(addProduct);
+            option.button(option.Text(addProduct));
+
+            //Quantity
+            option.InputText("Quantity", TestContext.DataRow["Quantify"].ToString());
+
+            //Control list number(Reactori nucleari)
+            option.lookup("ControlListNumber", 1);
+
+            //Product Name
+            option.InputText("CommercialName", TestContext.DataRow["CommName"].ToString());
+
+            //QuantityUnits(mie l)
+            option.lookup("QuantityUnits", 2);
+
+            //Code(ex.170199)
+            option.lookup("Code", 2);
+
+            //Value CIF
+            option.InputText("ValueCIF", TestContext.DataRow["ValueCIF"].ToString());
+
+            string saveCl = "div.modal-footer div.basic-commands > button:nth-child(2)";
+            option.WaitForExists(saveCl);
+            option.button(option.Text(saveCl));
+
+            Playback.Wait(1000);
 
             //Click button Next
             string next1 = "div.process-buttons.pull-right > div > button:nth-child(2)";
@@ -282,21 +312,20 @@ namespace TestareManual
 
             //*****Supporting Documents************//
 
-            //Click Button Edit(4)
-            option.editBtn( 4);
+            ////Click Button Edit(4)
+            //option.editBtn( 4);
 
-            //Select img and open
-            option.selectIMG();
+            ////Select img and open
+            //option.selectIMG();
 
-            //title
-            option.InputText( "Title", TestContext.DataRow["Title"].ToString());
+            ////title
+            //option.InputText( "Title", TestContext.DataRow["Title"].ToString());
 
-            //Click Save and Close
-            string saveClose = "div.modal-footer div.basic-commands > button:nth-child(2)";
-            option.WaitForExists(saveClose);
-            option.button( option.Text(saveClose));
+            ////Click Save and Close
+            //string saveClose = "div.modal-footer div.basic-commands > button:nth-child(2)";
+            //option.WaitForExists(saveClose);
+            //option.button( option.Text(saveClose));
 
-            Playback.Wait(1000);
 
             //Click button Next
             string next2 = "div.process-buttons.pull-right > div > button:nth-child(2)";

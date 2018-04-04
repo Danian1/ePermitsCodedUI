@@ -318,21 +318,21 @@ namespace TestareManual
 
             //*****Supporting Documents************//
 
-            //Click Button Edit(4)
-            option.editBtn(4);
+            ////Click Button Edit(4)
+            //option.editBtn(4);
 
-            //Select img and open
-            option.selectIMG();
+            ////Select img and open
+            //option.selectIMG();
 
-            //title
-             option.InputText("Title", TestContext.DataRow["Title"].ToString());
+            ////title
+            // option.InputText("Title", TestContext.DataRow["Title"].ToString());
 
-            //Click Save and Close
-            string saveClose = "div.modal-footer div.basic-commands > button:nth-child(2)";
-            option.WaitForExists(saveClose);
-            option.button(option.Text(saveClose));
+            ////Click Save and Close
+            //string saveClose = "div.modal-footer div.basic-commands > button:nth-child(2)";
+            //option.WaitForExists(saveClose);
+            //option.button(option.Text(saveClose));
 
-            Playback.Wait(1000);
+            
             //Click button Next
             string next2 = "div.process-buttons.pull-right > div > button:nth-child(2)";
             option.WaitForExists(next2);
