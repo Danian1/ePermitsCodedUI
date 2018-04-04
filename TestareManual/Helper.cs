@@ -15,11 +15,15 @@ namespace TestareManual
     /// Summary description for CodedUITest2
     /// </summary>
     [CodedUITest]
-    public class Options
+    public class Helper
     {
-        public Options()
+        private BrowserWindow browser;
+        public Helper(string targetBrowser, string uri, Boolean maximized)
         {
-
+            BrowserWindow.CurrentBrowser = targetBrowser;
+            BrowserWindow browser = BrowserWindow.Launch(uri);
+            browser.Maximized = true;
+            this.browser = browser;
         }
 
         [TestMethod]
@@ -28,82 +32,98 @@ namespace TestareManual
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
         }
 
-        public void CTS(UITestControl parent)
+
+        public string Text(string selector)
         {
-            var btnV = new HtmlButton(parent);
+            return this.browser.JQueryText(selector);
+        }
+
+        public string Value(string selector)
+        {
+            return this.browser.JQueryVal(selector);
+        }
+
+        public void WaitForExists(string selector)
+        {
+            this.browser.JQueryWaitForExists(selector);
+        }
+
+        public void CTS()
+        {
+            var btnV = new HtmlButton(this.browser);
             btnV.SearchProperties.Add(HtmlButton.PropertyNames.TagInstance, "2");
             Mouse.Click(btnV);
 
         }
-        public void InputText(UITestControl parent, string id, string text)
+        public void InputText(string id, string text)
         {
-            var input = new HtmlEdit(parent);
+            var input = new HtmlEdit(this.browser);
             input.SearchProperties.Add(HtmlEdit.PropertyNames.Id, id);
             input.WaitForControlExist(1000);
             input.Text = text;
         }
-        public void button(UITestControl parent, string text)
+        public void button(string text)
         {
-            var btn = new HtmlButton(parent);
+            var btn = new HtmlButton(this.browser);
             btn.SearchProperties.Add(HtmlButton.PropertyNames.InnerText, text);
             btn.WaitForControlExist(1000);
             Mouse.Click(btn);
         }
-        public void choose(UITestControl parent, string text)
+        public void choose(string text)
         {
-            var btn = new HtmlLabel(parent);
+            var btn = new HtmlLabel(this.browser);
             btn.SearchProperties.Add(HtmlLabel.PropertyNames.InnerText, text);
             btn.WaitForControlExist(1000);
             Mouse.Click(btn);
         }
-        public void links(UITestControl parent, string text)
+        public void links(string text)
         {
-            var link = new HtmlHyperlink(parent);
+            var link = new HtmlHyperlink(this.browser);
             link.SearchProperties.Add(HtmlHyperlink.PropertyNames.InnerText, text);
             Mouse.Click(link);
         }
-        public void lookup(UITestControl parent, string id, int row)
+        public void lookup(string id, int row)
         {
-            var spn = new HtmlEdit(parent);
+            var spn = new HtmlEdit(this.browser);
             spn.SearchProperties.Add(HtmlEdit.PropertyNames.Id, id);
             spn.WaitForControlExist();
             Mouse.Click(spn);
 
-            var text = new HtmlCell(parent);
+            var text = new HtmlCell(this.browser);
             text.SearchProperties.Add(HtmlCell.PropertyNames.RowIndex, row.ToString());
             text.WaitForControlExist();
             Mouse.DoubleClick(text);
         }
-        public void DateSelect(UITestControl parent, string id, int data)
+        public void DateSelect(string id, int data)
         {
-            var dataB = new HtmlEdit(parent);
+            var dataB = new HtmlEdit(this.browser);
             dataB.SearchProperties.Add(HtmlEdit.PropertyNames.Id, id);
             dataB.WaitForControlExist(1000);
             Mouse.Click(dataB);
 
-            var slData = new HtmlCell(parent);
+            var slData = new HtmlCell(this.browser);
             slData.SearchProperties.Add(HtmlCell.PropertyNames.InnerText, data.ToString());
             slData.WaitForControlExist(1000);
             Mouse.Click(slData);
         }
-        public void Combobox(UITestControl parent, string id, int value)
+        public void Combobox(string id, int value)
         {
-            var combo = new HtmlComboBox(parent);
+            var combo = new HtmlComboBox(this.browser);
             combo.SearchProperties.Add(HtmlComboBox.PropertyNames.Id, id);
             combo.WaitForControlExist(1000);
             combo.SelectedIndex = value;
         }
-        public void editBtn(UITestControl parent, int pos)
+        public void editBtn(int pos)
         {
-            var edit = new HtmlButton(parent);
+            var edit = new HtmlButton(this.browser);
             edit.SearchProperties.Add(HtmlButton.PropertyNames.TagInstance, pos.ToString());
             edit.WaitForControlExist();
             Mouse.Click(edit);
 
         }
-        public void selectIMG(UITestControl parent)
+        public void selectIMG()
         {
-            var btnChoose = new HtmlLabel(parent);
+            var btnChoose = new HtmlLabel(this.browser);
             btnChoose.SearchProperties.Add(HtmlLabel.PropertyNames.TagInstance, "6");
             btnChoose.WaitForControlExist();
             Mouse.Click(btnChoose);
@@ -122,47 +142,47 @@ namespace TestareManual
 
             Keyboard.SendKeys("{Enter}");
         }
-        public void clickLabel(UITestControl parent, string id)
+        public void clickLabel(string id)
         {
-            var lab = new HtmlSpan(parent);
+            var lab = new HtmlSpan(this.browser);
             lab.SearchProperties.Add(HtmlSpan.PropertyNames.Id, id);
             Mouse.Click(lab);
         }
-        public void clickChangeRole(UITestControl parent)
+        public void clickChangeRole()
         {
-            var role = new HtmlHyperlink(parent);
+            var role = new HtmlHyperlink(this.browser);
             role.SearchProperties.Add(HtmlHyperlink.PropertyNames.TagName, "A");
             role.SearchProperties.Add(HtmlHyperlink.PropertyNames.AbsolutePath, "App_Role()");
             role.WaitForControlExist(2000);
             role.WaitForControlReady();
             Mouse.Click(role);
         }
-        public void changeRole(UITestControl parent, string name)
+        public void changeRole(string name)
         {
-            var chRole = new HtmlRadioButton(parent);
+            var chRole = new HtmlRadioButton(this.browser);
             chRole.SearchProperties.Add(HtmlRadioButton.PropertyNames.Value, name);
             chRole.WaitForControlExist();
             Mouse.Click(chRole);
         }
-        public void CaseClick(UITestControl parent, string text)
+        public void CaseClick(string text)
         {
-            var cases = new HtmlCell(parent);
+            var cases = new HtmlCell(this.browser);
             cases.SearchProperties.Add(HtmlCell.PropertyNames.InnerText, text);
             cases.WaitForControlExist();
             Mouse.Click(cases);
             Mouse.DoubleClick(cases);
         }
-        public void Modalbtn(UITestControl parent, string text)
+        public void Modalbtn(string text)
         {
-            var nextBTN = new HtmlCustom(parent);
+            var nextBTN = new HtmlCustom(this.browser);
             nextBTN.SearchProperties.Add(HtmlCustom.PropertyNames.TagName, "A");
             nextBTN.SearchProperties.Add(HtmlCustom.PropertyNames.InnerText, text);
             nextBTN.WaitForControlExist();
             Mouse.Click(nextBTN);
         }
-        public void txtTextarea(UITestControl parent, string text)
+        public void txtTextarea(string text)
         {
-            var textarea = new HtmlTextArea(parent);
+            var textarea = new HtmlTextArea(this.browser);
             textarea.SearchProperties.Add(HtmlTextArea.PropertyNames.TagName, "TEXTAREA");
             textarea.SearchProperties.Add(HtmlTextArea.PropertyNames.Class, "fm");
             textarea.WaitForControlExist();

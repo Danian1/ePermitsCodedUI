@@ -26,338 +26,332 @@ namespace TestareManual
         [TestMethod]
         public void Permit1()
         {
-            Options option = new Options();
-
-            BrowserWindow.CurrentBrowser = "Chrome";
-            BrowserWindow browser = BrowserWindow.Launch("http://epermits.alfa-xp.com/#/login");
-            browser.Maximized = true;
+            Helper option = new Helper("Chrome", "http://epermits.alfa-xp.com/#/login", true);
 
             //Username
-            option.InputText(browser, "loginForm_login", TestContext.DataRow["login"].ToString());
+            option.InputText("loginForm_login", TestContext.DataRow["login"].ToString());
 
             //Password
-            option.InputText(browser, "loginForm_password", TestContext.DataRow["password"].ToString());
+            option.InputText("loginForm_password", TestContext.DataRow["password"].ToString());
 
             //Click button Login
             string login = "login-cmp > div > div > div > form > button";
-            option.button(browser, browser.JQueryText(login));
-
+            option.button(option.Text(login));
 
             //Select Service
             string service = "ul.services-inline-list > li:nth-child(1) p";
-            browser.JQueryWaitForExists(service);
-            option.links(browser, browser.JQueryText(service));
+            option.WaitForExists(service);
+            option.links(option.Text(service));
 
             //Click button Apply
             string Apply = "div.access-service > button";
-            browser.JQueryWaitForExists(Apply);
-            option.button(browser, browser.JQueryText(Apply));
+            option.WaitForExists(Apply);
+            option.button(option.Text(Apply));
 
             //Service Location(Serviciul control)
-            option.lookup(browser, "TeamId", 2);
+            option.lookup("TeamId", 2);
 
             //Applicant Type(Persoana Fizica)
-            option.lookup(browser, "ApplyType", 1);
+            option.lookup("ApplyType", 1);
 
             //IDNP
-            option.InputText(browser, "IDNP", TestContext.DataRow["idnp"].ToString());
+            option.InputText("IDNP", TestContext.DataRow["idnp"].ToString());
 
-            //IDNO
-            option.InputText(browser, "IDNO", TestContext.DataRow["idno"].ToString());
+            ////IDNO
+            //option.InputText("IDNO", TestContext.DataRow["idno"].ToString());
 
             //Represented by(IDNP)
-            option.InputText(browser, "RepresentedIDNP", TestContext.DataRow["ridnp"].ToString());
+            option.InputText("RepresentedIDNP", TestContext.DataRow["ridnp"].ToString());
 
             //I Agree
-            option.clickLabel(browser, "IsTermsAndConditions-label");
+            option.clickLabel("IsTermsAndConditions-label");
 
             //Click Next
             string next = "div.basic-commands > button";
-            option.button(browser, browser.JQueryText(next));
+            option.button(option.Text(next));
 
             //******Individual * ****Personal Data & Address * ***********//
             Playback.Wait(1000);
 
             //First name
-            option.InputText(browser, "ApplicantFirstName", TestContext.DataRow["Fname"].ToString());
+            option.InputText("ApplicantFirstName", TestContext.DataRow["Fname"].ToString());
 
             //Serial nr.passport
-            option.InputText(browser, "Passport", TestContext.DataRow["Passport"].ToString());
+            option.InputText("Passport", TestContext.DataRow["Passport"].ToString());
 
             //Last name
-            option.InputText(browser, "ApplicantLastName", TestContext.DataRow["Lname"].ToString());
+            option.InputText("ApplicantLastName", TestContext.DataRow["Lname"].ToString());
 
             //Phone
-            option.InputText(browser, "ApplicantPhone", TestContext.DataRow["Phone"].ToString());
+            option.InputText("ApplicantPhone", TestContext.DataRow["Phone"].ToString());
 
             //Middle name
-            option.InputText(browser, "ApplicantMiddleName", TestContext.DataRow["Mname"].ToString());
+            option.InputText("ApplicantMiddleName", TestContext.DataRow["Mname"].ToString());
 
             //Email
-            option.InputText(browser, "ApplicantEmail", TestContext.DataRow["Email"].ToString());
+            option.InputText("ApplicantEmail", TestContext.DataRow["Email"].ToString());
 
             //Birth date
-            option.DateSelect(browser, "ApplicantBirthDate", 13);
+            option.DateSelect("ApplicantBirthDate", 13);
 
             //Position
-            option.InputText(browser, "ApplicantPosition", TestContext.DataRow["Position"].ToString());
+            option.InputText("ApplicantPosition", TestContext.DataRow["Position"].ToString());
 
             //Country(Afganistan)
-            option.lookup(browser, "ApplicantAddressCountry", 1);
+            option.lookup("ApplicantAddressCountry", 1);
 
             //District(GAGAUZIA)
-            option.lookup(browser, "ApplicantAddressDistrict", 1);
+            option.lookup("ApplicantAddressDistrict", 1);
 
             //City(BAHMUT LOC.C.F.)
-            option.lookup(browser, "ApplicantAddressCity", 1);
+            option.lookup("ApplicantAddressCity", 1);
 
             //Sector(SEC.BOTANICA)
-            option.lookup(browser, "ApplicantAddressSector", 1);
+            option.lookup("ApplicantAddressSector", 1);
 
             //Street(bd.Constantin Negruzzi)
-            option.lookup(browser, "ApplicantAddressStreet", 1);
+            option.lookup("ApplicantAddressStreet", 1);
 
             //house
-            option.InputText(browser, "ApplicantAddressHouse", TestContext.DataRow["House"].ToString());
+            option.InputText("ApplicantAddressHouse", TestContext.DataRow["House"].ToString());
 
             //block
-            option.InputText(browser, "ApplicantAddressBlock", TestContext.DataRow["Block"].ToString());
+            option.InputText("ApplicantAddressBlock", TestContext.DataRow["Block"].ToString());
 
             //Floor
-            option.InputText(browser, "ApplicantAddressFloor", TestContext.DataRow["Floor"].ToString());
+            option.InputText("ApplicantAddressFloor", TestContext.DataRow["Floor"].ToString());
 
             //Apartment
-            option.InputText(browser, "ApplicantAddressApartment", TestContext.DataRow["Apartment"].ToString());
+            option.InputText("ApplicantAddressApartment", TestContext.DataRow["Apartment"].ToString());
 
             //PostalCode
-            option.InputText(browser, "ApplicantAddressPostalCode", TestContext.DataRow["PostalCode"].ToString());
+            option.InputText("ApplicantAddressPostalCode", TestContext.DataRow["PostalCode"].ToString());
 
             //Address Line 1
-            option.InputText(browser, "ApplicantAddressLine1", TestContext.DataRow["Adrline1"].ToString());
+            option.InputText("ApplicantAddressLine1", TestContext.DataRow["Adrline1"].ToString());
 
             //Address Line 2
-            option.InputText(browser, "ApplicantAddressLine2", TestContext.DataRow["Adrline2"].ToString());
+            option.InputText("ApplicantAddressLine2", TestContext.DataRow["Adrline2"].ToString());
 
             //*******Representative  Data & Address * ******//
 
             //Power of attorney
-            option.InputText(browser, "PowerOfAttorney", TestContext.DataRow["PowerATT"].ToString());
+            option.InputText("PowerOfAttorney", TestContext.DataRow["PowerATT"].ToString());
 
             //First Name
-            option.InputText(browser, "RepresentativeFirstName", TestContext.DataRow["repFname"].ToString());
+            option.InputText("RepresentativeFirstName", TestContext.DataRow["repFname"].ToString());
 
             //Representative Email
-            option.InputText(browser, "RepresentativeEmail", TestContext.DataRow["repEmail"].ToString());
+            option.InputText("RepresentativeEmail", TestContext.DataRow["repEmail"].ToString());
 
             //Last name
-            option.InputText(browser, "RepresentativeLastName", TestContext.DataRow["repLname"].ToString());
+            option.InputText("RepresentativeLastName", TestContext.DataRow["repLname"].ToString());
 
             //Representative Phone
-            option.InputText(browser, "RepresentativePhone", TestContext.DataRow["repPhone"].ToString());
+            option.InputText("RepresentativePhone", TestContext.DataRow["repPhone"].ToString());
 
             //Representative IDNP
-            option.InputText(browser, "RepresentativeIDNP", TestContext.DataRow["repIdnp"].ToString());
+            option.InputText("RepresentativeIDNP", TestContext.DataRow["repIdnp"].ToString());
 
             //Representative Type(Administrator)
-            option.Combobox(browser, "RepresentativeType", 0);
+            option.Combobox("RepresentativeType", 0);
 
             //Country(Africa de Sud)
-            option.lookup(browser, "RepresentativeAddressCountry", 2);
+            option.lookup("RepresentativeAddressCountry", 2);
 
             //District(MUN.BALTI)
-            option.lookup(browser, "RepresentativeAddressDistrict", 2);
+            option.lookup("RepresentativeAddressDistrict", 2);
 
             //City(BUCIUMENI LOC.ST.C.F.)
-            option.lookup(browser, "RepresentativeAddressCity", 2);
+            option.lookup("RepresentativeAddressCity", 2);
 
             //Sector(SEC.BUIUCANI)
-            option.lookup(browser, "RepresentativeAddressSector", 2);
+            option.lookup("RepresentativeAddressSector", 2);
 
             //Street(bd.Cuza - Voda)
-            option.lookup(browser, "RepresentativeAddressStreet", 2);
+            option.lookup("RepresentativeAddressStreet", 2);
 
             //house
-            option.InputText(browser, "RepresentativeAddressHouse", TestContext.DataRow["repHouse"].ToString());
+            option.InputText("RepresentativeAddressHouse", TestContext.DataRow["repHouse"].ToString());
 
             //block
-            option.InputText(browser, "RepresentativeAddressBlock", TestContext.DataRow["repBlock"].ToString());
+            option.InputText("RepresentativeAddressBlock", TestContext.DataRow["repBlock"].ToString());
 
             //Floor
-            option.InputText(browser, "RepresentativeAddressFloor", TestContext.DataRow["repFloor"].ToString());
+            option.InputText("RepresentativeAddressFloor", TestContext.DataRow["repFloor"].ToString());
 
             //Apartment
-            option.InputText(browser, "RepresentativeAddressApartment", TestContext.DataRow["repApart"].ToString());
+            option.InputText("RepresentativeAddressApartment", TestContext.DataRow["repApart"].ToString());
 
             //Postal code
-            option.InputText(browser, "RepresentativeAddressPostalCode", TestContext.DataRow["repPcode"].ToString());
+            option.InputText("RepresentativeAddressPostalCode", TestContext.DataRow["repPcode"].ToString());
 
             //Address Entrance
-            option.InputText(browser, "RepresentativeAddressEntrance", TestContext.DataRow["AddrENT"].ToString());
+            option.InputText("RepresentativeAddressEntrance", TestContext.DataRow["AddrENT"].ToString());
 
             //Representative Address Line 1
-            option.InputText(browser, "RepresentativeAddressLine1", TestContext.DataRow["repAdrline1"].ToString());
+            option.InputText("RepresentativeAddressLine1", TestContext.DataRow["repAdrline1"].ToString());
 
             //Representative Address Line 2
-            option.InputText(browser, "RepresentativeAddressLine2", TestContext.DataRow["repAdrline2"].ToString());
+            option.InputText("RepresentativeAddressLine2", TestContext.DataRow["repAdrline2"].ToString());
 
             //Click button Next
-            browser.JQueryWaitForExists(next);
-            option.button(browser, browser.JQueryText(next));
+            option.WaitForExists(next);
+            option.button(option.Text(next));
 
             //******Input Permit Application Form************//
 
             //Importer
-            option.InputText(browser, "Importer", TestContext.DataRow["importer"].ToString());
+            option.InputText("Importer", TestContext.DataRow["importer"].ToString());
 
             //Exporter
-            option.InputText(browser, "Exporter", TestContext.DataRow["exporter"].ToString());
+            option.InputText("Exporter", TestContext.DataRow["exporter"].ToString());
 
             //Importer address
-            option.InputText(browser, "ImporterAddress", TestContext.DataRow["iAddress"].ToString());
+            option.InputText("ImporterAddress", TestContext.DataRow["iAddress"].ToString());
 
             //Exporter address
-            option.InputText(browser, "ExporterAddress", TestContext.DataRow["eAddress"].ToString());
+            option.InputText("ExporterAddress", TestContext.DataRow["eAddress"].ToString());
 
             //Importer phone
-            option.InputText(browser, "ImporterPhone", TestContext.DataRow["iPhone"].ToString());
+            option.InputText("ImporterPhone", TestContext.DataRow["iPhone"].ToString());
 
             //Exporter phone
-            option.InputText(browser, "ExporterPhone", TestContext.DataRow["ePhone"].ToString());
+            option.InputText("ExporterPhone", TestContext.DataRow["ePhone"].ToString());
 
             //Importer fax
-            option.InputText(browser, "ImporterFax", TestContext.DataRow["iFax"].ToString());
+            option.InputText("ImporterFax", TestContext.DataRow["iFax"].ToString());
 
             //Exporter fax
-            option.InputText(browser, "ExporterFax", TestContext.DataRow["eFax"].ToString());
+            option.InputText("ExporterFax", TestContext.DataRow["eFax"].ToString());
 
             //Transporter
-            option.InputText(browser, "Transporter", TestContext.DataRow["Transporter"].ToString());
+            option.InputText("Transporter", TestContext.DataRow["Transporter"].ToString());
 
             //Holder
-            option.InputText(browser, "Holder", TestContext.DataRow["Holder"].ToString());
+            option.InputText("Holder", TestContext.DataRow["Holder"].ToString());
 
             //Expeditor
-            option.InputText(browser, "Expeditor", TestContext.DataRow["Expeditor"].ToString());
+            option.InputText("Expeditor", TestContext.DataRow["Expeditor"].ToString());
 
             //Entry customs point(Post vamal Leușeni(PVFI, rutier))
-            option.lookup(browser, "EntryCustomsPoint", 1);
+            option.lookup("EntryCustomsPoint", 1);
 
             //Exit customs point(Post vamal Leușeni(PVFI, rutier))
-            option.lookup(browser, "ExitCustomsPoint", 1);
+            option.lookup("ExitCustomsPoint", 1);
 
             //Transit route in Moldova
-            option.InputText(browser, "TransitRouteMoldova", TestContext.DataRow["TRMD"].ToString());
+            option.InputText("TransitRouteMoldova", TestContext.DataRow["TRMD"].ToString());
 
             //Transport type(Auto)
-            option.lookup(browser, "TransportType", 1);
+            option.lookup("TransportType", 1);
 
             //Additional Info
-            option.InputText(browser, "OtherApplicantInformation", TestContext.DataRow["AddInfo"].ToString());
+            option.InputText("OtherApplicantInformation", TestContext.DataRow["AddInfo"].ToString());
 
             //Validity term requested
-            option.InputText(browser, "ValidityTermRequested", TestContext.DataRow["ValTReq"].ToString());
+            option.InputText("ValidityTermRequested", TestContext.DataRow["ValTReq"].ToString());
 
             //Importing Country(Africa de Sud)
-            option.lookup(browser, "ImportingCountry", 2);
+            option.lookup("ImportingCountry", 2);
 
             //Paying Country(Afganistan)
-            option.lookup(browser, "PayingCountry", 1);
+            option.lookup("PayingCountry", 1);
 
             //Destination Country(Albania)
-            option.lookup(browser, "DestinationCountry", 3);
+            option.lookup("DestinationCountry", 3);
 
             //Exporting Country(Africa de Sud)
-            option.lookup(browser, "ExportingCountry", 2);
+            option.lookup("ExportingCountry", 2);
 
             //Click button Next
             string next1 = "div.process-buttons.pull-right > div > button:nth-child(2)";
-            browser.JQueryWaitForExists(next1);
-            option.button(browser, browser.JQueryText(next1));
+            option.WaitForExists(next1);
+            option.button(option.Text(next1));
 
             //*****Supporting Documents************//
 
             //Click Button Edit(4)
-            option.editBtn(browser, 4);
+            option.editBtn(4);
 
             //Select img and open
-            option.selectIMG(browser);
+            option.selectIMG();
 
             //title
-            option.InputText(browser, "Title", TestContext.DataRow["Title"].ToString());
+            option.InputText("Title", TestContext.DataRow["Title"].ToString());
 
             //Click Save and Close
             string saveClose = "div.modal-footer div.basic-commands > button:nth-child(2)";
-            browser.JQueryWaitForExists(saveClose);
-            option.button(browser, browser.JQueryText(saveClose));
+            option.WaitForExists(saveClose);
+            option.button(option.Text(saveClose));
 
             //Click button Next
             string next2 = "div.process-buttons.pull-right > div > button:nth-child(2)";
-            browser.JQueryWaitForExists(next2);
-            option.button(browser, browser.JQueryText(next2));
+            option.WaitForExists(next2);
+            option.button(option.Text(next2));
 
             ////Sign the document button
             //string SignDoc = "div.ng-untouched.ng-pristine.ng-invalid > button.btn.btn-primary";
-            //browser.JQueryWaitForExists(SignDoc);
-            //button(browser, browser.JQueryText(SignDoc));
+            //browser.WaitForExists(SignDoc);
+            //button(option.Text(SignDoc));
 
             //Click button Next
             string next3 = "div.process-buttons.pull-right > div > button:nth-child(2)";
-            browser.JQueryWaitForExists(next3);
-            option.button(browser, browser.JQueryText(next3));
+            option.WaitForExists(next3);
+            option.button(option.Text(next3));
 
             //*********Confirm Application*************//
 
             //Playback.Wait(2000);
             //I Agree
-            //clickLabel(browser, "1");
+            //clickLabel("1");
 
             //Request Delivery
-            option.lookup(browser, "RequestDelivery", 1);
+            option.lookup("RequestDelivery", 1);
 
             //Destination Locality
-            //lookup(browser, "DeliveryTeamID", 1);
+            //lookup("DeliveryTeamID", 1);
 
             //Destination Postal Code
-            //InputText(browser, "DeliveryPostalCode", TestContext.DataRow["DesPoCode"].ToString());
+            //InputText("DeliveryPostalCode", TestContext.DataRow["DesPoCode"].ToString());
 
             //Destination Address
-            //InputText(browser, "DeliveryAddress", TestContext.DataRow["DestAddress"].ToString());
+            //InputText("DeliveryAddress", TestContext.DataRow["DestAddress"].ToString());
 
             //Click Confirm
             string confirm = "div.process-buttons.pull-right > div > button:nth-child(2)";
-            browser.JQueryWaitForExists(confirm);
-            option.button(browser, browser.JQueryText(confirm));
+            option.WaitForExists(confirm);
+            option.button(option.Text(confirm));
 
             //CaseRember
             string caseNr = "#CaseNumber";
-            browser.JQueryWaitForExists(caseNr);
-            var caseRember = browser.JQueryVal(caseNr);
+            option.WaitForExists(caseNr);
+            var caseRember = option.Value(caseNr);
 
             //Click Finish
             string finish = "div.basic-commands > button";
-            browser.JQueryWaitForExists(finish);
-            option.button(browser, browser.JQueryText(finish));
+            option.WaitForExists(finish);
+            option.button(option.Text(finish));
 
             //Click Confirm
             string confirm1 = "div.basic-commands > button";
-            browser.JQueryWaitForExists(confirm1);
-            option.button(browser, browser.JQueryText(confirm1));
+            option.WaitForExists(confirm1);
+            option.button(option.Text(confirm1));
 
             //**************************************//
 
             ////Click My Cabinet
             //string MyCab = "#main-menu > ul > div > navigator > li:nth-child(3)";
-            //browser.JQueryWaitForExists(MyCab);
-            //links(browser, browser.JQueryText(MyCab));
+            //browser.WaitForExists(MyCab);
+            //links(option.Text(MyCab));
 
             ////Click Submitted
             //string Submitted = "#page-content > container-view > div:nth-child(2) > div > div > div > aside > div > nav > profile-tree > div.hidden-xs > ui-tree > ul > li:nth-child(2) > div > ui-tree > ul > li:nth-child(2)";
-            //browser.JQueryWaitForExists(Submitted);
-            //links(browser, browser.JQueryText(Submitted));
+            //browser.WaitForExists(Submitted);
+            //links(option.Text(Submitted));
 
             //Playback.Wait(5000);
             //MessageBox.Show(caseRember, "CaseNumber of Service");
-            //browser.Close();
 
 
             //******* MMIP ************//
@@ -369,7 +363,7 @@ namespace TestareManual
             //InputText(brows, "UserName", TestContext.DataRow["username"].ToString());
             //InputText(brows, "Password", TestContext.DataRow["pass"].ToString());
             //string btnOK = "#loginOK";
-            //button(brows, brows.JQueryText(btnOK));
+            //button(brows, brows.Text(btnOK));
 
 
             //string linkIncTaskSS = "div.fmNavTree ul > li:nth-child(1) > ul > li:nth-child(2) > a > label";
@@ -387,135 +381,135 @@ namespace TestareManual
 
             ////Supervisor
             //clickChangeRole(brows);
-            //brows.JQueryWaitForExists(supervisor);
-            // option.changeRole(brows, brows.JQueryText(supervisor));
+            //brows.WaitForExists(supervisor);
+            // option.changeRole(brows, brows.Text(supervisor));
 
 
-            //brows.JQueryWaitForExists(linkIncTaskSS);
-            // option.choose(brows, brows.JQueryText(linkIncTaskSS).ToString());
+            //brows.WaitForExists(linkIncTaskSS);
+            // option.choose(brows, brows.Text(linkIncTaskSS).ToString());
 
             // option.CaseClick(brows, caseRember);
 
-            //brows.JQueryWaitForExists(btnNext1);
-            // option.Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            // option.Modalbtn(brows, brows.Text(btnNext1));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            // option.Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            // option.Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(Send);
-            // option.Modalbtn(brows, brows.JQueryText(Send));
+            //brows.WaitForExists(Send);
+            // option.Modalbtn(brows, brows.Text(Send));
 
             //Playback.Wait(1000);
 
             ////Specialist
             //clickChangeRole(brows);
-            //brows.JQueryWaitForExists(specialist);
-            //changeRole(brows, brows.JQueryText(specialist));
+            //brows.WaitForExists(specialist);
+            //changeRole(brows, brows.Text(specialist));
 
-            //brows.JQueryWaitForExists(linkIncTaskSS);
-            //choose(brows, brows.JQueryText(linkIncTaskSS).ToString());
+            //brows.WaitForExists(linkIncTaskSS);
+            //choose(brows, brows.Text(linkIncTaskSS).ToString());
 
             //CaseClick(brows, caseRember);
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(Send1);
-            //Modalbtn(brows, brows.JQueryText(Send1));
+            //brows.WaitForExists(Send1);
+            //Modalbtn(brows, brows.Text(Send1));
 
             //Playback.Wait(1000);
 
 
             //CaseClick(brows, caseRember);
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(Send);
-            //Modalbtn(brows, brows.JQueryText(Send));
+            //brows.WaitForExists(Send);
+            //Modalbtn(brows, brows.Text(Send));
 
             //Playback.Wait(1000);
 
             ////Supervisor
             //clickChangeRole(brows);
-            //brows.JQueryWaitForExists(supervisor);
-            //changeRole(brows, brows.JQueryText(supervisor));
+            //brows.WaitForExists(supervisor);
+            //changeRole(brows, brows.Text(supervisor));
 
-            //brows.JQueryWaitForExists(linkIncTaskSS);
-            //choose(brows, brows.JQueryText(linkIncTaskSS).ToString());
+            //brows.WaitForExists(linkIncTaskSS);
+            //choose(brows, brows.Text(linkIncTaskSS).ToString());
 
             //CaseClick(brows, caseRember);
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
             //txtTextarea(brows, TestContext.DataRow["txtarea1"].ToString());
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(Send1);
-            //Modalbtn(brows, brows.JQueryText(Send1));
+            //brows.WaitForExists(Send1);
+            //Modalbtn(brows, brows.Text(Send1));
 
             //Playback.Wait(1000);
 
             ////Director
             //clickChangeRole(brows);
-            //brows.JQueryWaitForExists(director);
-            //changeRole(brows, brows.JQueryText(director));
+            //brows.WaitForExists(director);
+            //changeRole(brows, brows.Text(director));
 
-            //brows.JQueryWaitForExists(linkIncTaskD);
-            //choose(brows, brows.JQueryText(linkIncTaskD).ToString());
+            //brows.WaitForExists(linkIncTaskD);
+            //choose(brows, brows.Text(linkIncTaskD).ToString());
 
             //CaseClick(brows, caseRember);
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
 
             //txtTextarea(brows, TestContext.DataRow["txtarea2"].ToString());
 
-            //brows.JQueryWaitForExists(btnNext2);
-            //Modalbtn(brows, brows.JQueryText(btnNext2));
+            //brows.WaitForExists(btnNext2);
+            //Modalbtn(brows, brows.Text(btnNext2));
 
-            //brows.JQueryWaitForExists(Send1);
-            //Modalbtn(brows, brows.JQueryText(Send1));
+            //brows.WaitForExists(Send1);
+            //Modalbtn(brows, brows.Text(Send1));
 
-            //brows.JQueryWaitForExists(btnNext3);
-            //Modalbtn(brows, brows.JQueryText(btnNext3));
+            //brows.WaitForExists(btnNext3);
+            //Modalbtn(brows, brows.Text(btnNext3));
 
             //Playback.Wait(1000);
-            //brows.JQueryWaitForExists(btnNext1);
-            //Modalbtn(brows, brows.JQueryText(btnNext1));
+            //brows.WaitForExists(btnNext1);
+            //Modalbtn(brows, brows.Text(btnNext1));
             //Playback.Wait(1000);
-            //brows.JQueryWaitForExists(btnClose);
-            //Modalbtn(brows, brows.JQueryText(btnClose));
+            //brows.WaitForExists(btnClose);
+            //Modalbtn(brows, brows.Text(btnClose));
 
             //brows.Close();
 
