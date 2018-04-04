@@ -1,13 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
-using CodedUI.jQueryExtensions;
-using System.IO;
-using System.Windows.Forms;
-using System;
-using TestareManual.Properties;
-using System.Drawing;
 
 namespace TestareManual
 {
@@ -292,7 +284,7 @@ namespace TestareManual
 
             ////Sign the document button
             //string SignDoc = "div.ng-untouched.ng-pristine.ng-invalid > button.btn.btn-primary";
-            //browser.WaitForExists(SignDoc);
+            //mmiper.WaitForExists(SignDoc);
             //button(option.Text(SignDoc));
 
             //Click button Next
@@ -342,12 +334,12 @@ namespace TestareManual
 
             ////Click My Cabinet
             //string MyCab = "#main-menu > ul > div > navigator > li:nth-child(3)";
-            //browser.WaitForExists(MyCab);
+            //mmiper.WaitForExists(MyCab);
             //links(option.Text(MyCab));
 
             ////Click Submitted
             //string Submitted = "#page-content > container-view > div:nth-child(2) > div > div > div > aside > div > nav > profile-tree > div.hidden-xs > ui-tree > ul > li:nth-child(2) > div > ui-tree > ul > li:nth-child(2)";
-            //browser.WaitForExists(Submitted);
+            //mmiper.WaitForExists(Submitted);
             //links(option.Text(Submitted));
 
             //Playback.Wait(5000);
@@ -355,15 +347,12 @@ namespace TestareManual
 
 
             //******* MMIP ************//
+            //Helper mmip = new Helper("Chrome", "http://mmip.alfa-xp.com", true);
 
-            //BrowserWindow brows = BrowserWindow.Launch("http://mmip.alfa-xp.com");
-
-            //brows.Maximized = true;
-
-            //InputText(brows, "UserName", TestContext.DataRow["username"].ToString());
-            //InputText(brows, "Password", TestContext.DataRow["pass"].ToString());
+            //mmip.InputText("UserName", TestContext.DataRow["username"].ToString());
+            //mmip.InputText("Password", TestContext.DataRow["pass"].ToString());
             //string btnOK = "#loginOK";
-            //button(brows, brows.Text(btnOK));
+            //mmip.button(mmip.Text(btnOK));
 
 
             //string linkIncTaskSS = "div.fmNavTree ul > li:nth-child(1) > ul > li:nth-child(2) > a > label";
@@ -380,138 +369,139 @@ namespace TestareManual
 
 
             ////Supervisor
-            //clickChangeRole(brows);
-            //brows.WaitForExists(supervisor);
-            // option.changeRole(brows, brows.Text(supervisor));
+            //mmip.clickChangeRole();
+            //mmip.WaitForExists(supervisor);
+            //mmip.changeRole(mmip.Text(supervisor));
 
 
-            //brows.WaitForExists(linkIncTaskSS);
-            // option.choose(brows, brows.Text(linkIncTaskSS).ToString());
+            //mmip.WaitForExists(linkIncTaskSS);
+            //mmip.choose(mmip.Text(linkIncTaskSS).ToString());
 
-            // option.CaseClick(brows, caseRember);
+            //mmip.CaseClick("C007500/2018");
 
-            //brows.WaitForExists(btnNext1);
-            // option.Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn(mmip.Text(btnNext1));
 
-            //brows.WaitForExists(btnNext2);
-            // option.Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn(mmip.Text(btnNext2));
 
-            //brows.WaitForExists(Send);
-            // option.Modalbtn(brows, brows.Text(Send));
+            //mmip.WaitForExists(Send);
+            //mmip.Modalbtn(mmip.Text(Send));
 
             //Playback.Wait(1000);
 
             ////Specialist
-            //clickChangeRole(brows);
-            //brows.WaitForExists(specialist);
-            //changeRole(brows, brows.Text(specialist));
+            //mmip.clickChangeRole();
+            //mmip.WaitForExists(specialist);
+            //mmip.changeRole(mmip.Text(specialist));
 
-            //brows.WaitForExists(linkIncTaskSS);
-            //choose(brows, brows.Text(linkIncTaskSS).ToString());
+            //mmip.WaitForExists(linkIncTaskSS);
+            //mmip.choose(mmip.Text(linkIncTaskSS).ToString());
 
-            //CaseClick(brows, caseRember);
+            //mmip.CaseClick("C007500/2018");
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn(mmip.Text(btnNext1));
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(Send1);
-            //Modalbtn(brows, brows.Text(Send1));
+            //mmip.WaitForExists(Send1);
+            //mmip.Modalbtn( mmip.Text(Send1));
 
             //Playback.Wait(1000);
 
 
-            //CaseClick(brows, caseRember);
+            //mmip.CaseClick("C007500/2018");
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(Send);
-            //Modalbtn(brows, brows.Text(Send));
+            //mmip.WaitForExists(Send);
+            //mmip.Modalbtn( mmip.Text(Send));
 
             //Playback.Wait(1000);
 
             ////Supervisor
-            //clickChangeRole(brows);
-            //brows.WaitForExists(supervisor);
-            //changeRole(brows, brows.Text(supervisor));
+            //mmip.clickChangeRole();
+            //mmip.WaitForExists(supervisor);
+            //mmip.changeRole( mmip.Text(supervisor));
 
-            //brows.WaitForExists(linkIncTaskSS);
-            //choose(brows, brows.Text(linkIncTaskSS).ToString());
+            //mmip.WaitForExists(linkIncTaskSS);
+            //mmip.choose( mmip.Text(linkIncTaskSS).ToString());
 
-            //CaseClick(brows, caseRember);
+            //mmip.CaseClick("C007500/2018");
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //txtTextarea(brows, TestContext.DataRow["txtarea1"].ToString());
+            //mmip.txtTextarea( TestContext.DataRow["txtarea1"].ToString());
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(Send1);
-            //Modalbtn(brows, brows.Text(Send1));
+            //mmip.WaitForExists(Send1);
+            //mmip.Modalbtn( mmip.Text(Send1));
 
             //Playback.Wait(1000);
 
             ////Director
-            //clickChangeRole(brows);
-            //brows.WaitForExists(director);
-            //changeRole(brows, brows.Text(director));
+            //mmip.clickChangeRole();
+            //mmip.WaitForExists(director);
+            //mmip.changeRole( mmip.Text(director));
 
-            //brows.WaitForExists(linkIncTaskD);
-            //choose(brows, brows.Text(linkIncTaskD).ToString());
+            //mmip.WaitForExists(linkIncTaskD);
+            //mmip.choose( mmip.Text(linkIncTaskD).ToString());
 
-            //CaseClick(brows, caseRember);
+            //mmip.CaseClick("C007500/2018");
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //txtTextarea(brows, TestContext.DataRow["txtarea2"].ToString());
+            //mmip.txtTextarea( TestContext.DataRow["txtarea2"].ToString());
 
-            //brows.WaitForExists(btnNext2);
-            //Modalbtn(brows, brows.Text(btnNext2));
+            //mmip.WaitForExists(btnNext2);
+            //mmip.Modalbtn( mmip.Text(btnNext2));
 
-            //brows.WaitForExists(Send1);
-            //Modalbtn(brows, brows.Text(Send1));
+            //mmip.WaitForExists(Send1);
+            //mmip.Modalbtn( mmip.Text(Send1));
 
-            //brows.WaitForExists(btnNext3);
-            //Modalbtn(brows, brows.Text(btnNext3));
+            //mmip.WaitForExists(btnNext3);
+            //mmip.Modalbtn( mmip.Text(btnNext3));
 
             //Playback.Wait(1000);
-            //brows.WaitForExists(btnNext1);
-            //Modalbtn(brows, brows.Text(btnNext1));
-            //Playback.Wait(1000);
-            //brows.WaitForExists(btnClose);
-            //Modalbtn(brows, brows.Text(btnClose));
+            //mmip.WaitForExists(btnNext1);
+            //mmip.Modalbtn( mmip.Text(btnNext1));
 
-            //brows.Close();
+            //Playback.Wait(1000);
+
+            //mmip.WaitForExists(btnClose);
+            //mmip.Modalbtn( mmip.Text(btnClose));
+
 
         }
 
