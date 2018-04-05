@@ -26,15 +26,15 @@ namespace TestareManual
         [TestMethod]
         public void Permit100()
         {
-            Helper option = new Helper("Chrome", "http://epermits.alfa-xp.com/#/login", true);
+            Helper option = new Helper("Chrome", "http://epermits.alfa-xp.com/#/login", true, TestContext);
 
-            //Username
-            option.InputText("loginForm_login", TestContext.DataRow["login"].ToString());
+            // Username
+            option.InputText("loginForm_login", option.metadata("login"));
 
-            //Password
-             option.InputText("loginForm_password", TestContext.DataRow["password"].ToString());
+            // Password
+            option.InputText("loginForm_password", option.metadata("password"));
 
-            //Click button Login
+            // Click button Login
             string login = "login-cmp > div > div > div > form > button";
             option.button(option.Text(login));
 
@@ -46,252 +46,253 @@ namespace TestareManual
             option.WaitForExists(page7);
             option.Modalbtn(option.Text(page7));
 
-            //Select Service
+            // Select Service
             string service = "ul.services-inline-list > li:nth-child(13) p";
             option.WaitForExists(service);
             option.links(option.Text(service));
 
-            //Click button Apply
+            // Click button Apply
             string Apply = "div.access-service > button";
             option.WaitForExists(Apply);
             option.button(option.Text(Apply));
 
 
-            //****************** 1 - FORM ****************//
-            //Service Location(Serviciul control)
-             option.lookup("TeamId", 2);
 
-            //Applicant Type(Persoana Juridica)
-             option.lookup("ApplyType", 1);
+            // Service Location(Serviciul control)
+            option.lookup("TeamId", 2);
 
-            //IDNP
-             option.InputText("IDNP", TestContext.DataRow["idnp"].ToString());
+            // Applicant Type(Persoana Juridica)
+            option.lookup("ApplyType", 1);
 
-            //IDNO
-             option.InputText("IDNO", TestContext.DataRow["idno"].ToString());
+            // IDNP
+            option.InputText("IDNP", option.metadata("idnp"));
 
-            ////Represented by(IDNP)
-            // option.InputText("RepresentedIDNP", TestContext.DataRow["ridnp"].ToString());
+            // IDNO
+            option.InputText("IDNO", option.metadata("idno"));
 
-            //I Agree
+            // // Represented by(IDNP)
+            //  option.InputText("RepresentedIDNP", option.metadata("ridnp"));
+
+            // I Agree
             option.clickLabel("IsTermsAndConditions-label");
 
-            //Click Next
+            // Click Next
             string next = "div.basic-commands > button";
             option.button(option.Text(next));
 
 
-            //****************** 2 - FORM ****************//
 
-            //Legal form(Întreprindere colectivă)
-             option.lookup("LegalForm", 2);
 
-            //Date of Decision on Registration
+            // Legal form(Întreprindere colectivă)
+            option.lookup("LegalForm", 2);
+
+            // Date of Decision on Registration
             option.DateSelect("RegCertificateDate", 13);
 
-            //Legal Entity name *
-             option.InputText("LegalEntityName", TestContext.DataRow["LegEnName"].ToString());
+            // Legal Entity name *
+            option.InputText("LegalEntityName", option.metadata("LegEnName"));
 
-            //Country(Afganistan)
-             option.lookup("ApplicantAddressCountry", 1);
+            // Country(Afganistan)
+            option.lookup("ApplicantAddressCountry", 1);
 
-            //District(GAGAUZIA)
-             option.lookup("ApplicantAddressDistrict", 1);
+            // District(GAGAUZIA)
+            option.lookup("ApplicantAddressDistrict", 1);
 
-            //City(BAHMUT LOC.C.F.)
-             option.lookup("ApplicantAddressCity", 1);
+            // City(BAHMUT LOC.C.F.)
+            option.lookup("ApplicantAddressCity", 1);
 
-            //Sector(SEC.BOTANICA)
-             option.lookup("ApplicantAddressSector", 1);
+            // Sector(SEC.BOTANICA)
+            option.lookup("ApplicantAddressSector", 1);
 
-            //Street(bd.Constantin Negruzzi)
-             option.lookup("ApplicantAddressStreet", 1);
+            // Street(bd.Constantin Negruzzi)
+            option.lookup("ApplicantAddressStreet", 1);
 
-            //house
-             option.InputText("ApplicantAddressHouse", TestContext.DataRow["House"].ToString());
+            // house
+            option.InputText("ApplicantAddressHouse", option.metadata("House"));
 
-            //block
-             option.InputText("ApplicantAddressBlock", TestContext.DataRow["Block"].ToString());
+            // block
+            option.InputText("ApplicantAddressBlock", option.metadata("Block"));
 
-            //Floor
-             option.InputText("ApplicantAddressFloor", TestContext.DataRow["Floor"].ToString());
+            // Floor
+            option.InputText("ApplicantAddressFloor", option.metadata("Floor"));
 
-            //Apartment
-             option.InputText("ApplicantAddressApartment", TestContext.DataRow["Apartment"].ToString());
+            // Apartment
+            option.InputText("ApplicantAddressApartment", option.metadata("Apartment"));
 
-            //PostalCode
-             option.InputText("ApplicantAddressPostalCode", TestContext.DataRow["PostalCode"].ToString());
+            // PostalCode
+            option.InputText("ApplicantAddressPostalCode", option.metadata("PostalCode"));
 
-            //Address Line 1 
-             option.InputText("ApplicantAddressLine1", TestContext.DataRow["Adrline1"].ToString());
+            // Address Line 1 
+            option.InputText("ApplicantAddressLine1", option.metadata("Adrline1"));
 
-            //Address Line 2 
-             option.InputText("ApplicantAddressLine2", TestContext.DataRow["Adrline2"].ToString());
+            // Address Line 2 
+            option.InputText("ApplicantAddressLine2", option.metadata("Adrline2"));
 
+            // Serial nr.passport
+            option.InputText("Passport", option.metadata("Passport"));
 
-            //Serial nr.passport
-             option.InputText("Passport", TestContext.DataRow["Passport"].ToString());
+            // First name
+            option.InputText("ApplicantFirstName", option.metadata("Fname"));
 
-            //First name
-             option.InputText("ApplicantFirstName", TestContext.DataRow["Fname"].ToString());
+            // Power of attorney 
+            option.InputText("PowerOfAttorney", option.metadata("PowerATT"));
 
-            //Power of attorney 
-             option.InputText("PowerOfAttorney", TestContext.DataRow["PowerATT"].ToString());
+            // Last name
+            option.InputText("ApplicantLastName", option.metadata("Lname"));
 
-            //Last name
-             option.InputText("ApplicantLastName", TestContext.DataRow["Lname"].ToString());
+            // Position
+            option.InputText("ApplicantPosition", option.metadata("Position"));
 
-            //Position
-             option.InputText("ApplicantPosition", TestContext.DataRow["Position"].ToString());
+            // Middle name
+            option.InputText("ApplicantMiddleName", option.metadata("Mname"));
 
-            //Middle name
-             option.InputText("ApplicantMiddleName", TestContext.DataRow["Mname"].ToString());
+            // Email
+            option.InputText("ApplicantEmail", option.metadata("Email"));
 
-            //Email
-             option.InputText("ApplicantEmail", TestContext.DataRow["Email"].ToString());
-
-            //Birth date
+            // Birth date
             option.DateSelect("ApplicantBirthDate", 13);
 
-            //Phone
-             option.InputText("ApplicantPhone", TestContext.DataRow["Phone"].ToString());
+            // Phone
+            option.InputText("ApplicantPhone", option.metadata("Phone"));
 
-            //Country(Africa de Sud)
-             option.lookup("RepresentativeAddressCountry", 2);
+            // Country(Africa de Sud)
+            option.lookup("RepresentativeAddressCountry", 2);
 
-            //Sector(SEC.BUIUCANI)
-             option.lookup("RepresentativeAddressSector", 2);
+            // Sector(SEC.BUIUCANI)
+            option.lookup("RepresentativeAddressSector", 2);
 
-            //house
-             option.InputText("RepresentativeAddressHouse", TestContext.DataRow["repHouse"].ToString());
+            // house
+            option.InputText("RepresentativeAddressHouse", option.metadata("repHouse"));
 
-            //District(MUN.BALTI)
-             option.lookup("RepresentativeAddressDistrict", 2);
+            // District(MUN.BALTI)
+            option.lookup("RepresentativeAddressDistrict", 2);
 
-            //Floor
-             option.InputText("RepresentativeAddressFloor", TestContext.DataRow["repFloor"].ToString());
+            // Floor
+            option.InputText("RepresentativeAddressFloor", option.metadata("repFloor"));
 
-            //City(BUCIUMENI LOC.ST.C.F.)
-             option.lookup("RepresentativeAddressCity", 2);
+            // City(BUCIUMENI LOC.ST.C.F.)
+            option.lookup("RepresentativeAddressCity", 2);
 
-            //Apartment
-             option.InputText("RepresentativeAddressApartment", TestContext.DataRow["repApart"].ToString());
+            // Apartment
+            option.InputText("RepresentativeAddressApartment", option.metadata("repApart"));
 
-            //Street(bd. Cuza-Voda)
-             option.lookup("RepresentativeAddressStreet", 2);
+            // Street(bd. Cuza-Voda)
+            option.lookup("RepresentativeAddressStreet", 2);
 
-            //block
-             option.InputText("RepresentativeAddressBlock", TestContext.DataRow["repBlock"].ToString());
+            // block
+            option.InputText("RepresentativeAddressBlock", option.metadata("repBlock"));
 
-            //Address Entrance 
-             option.InputText("RepresentativeAddressEntrance", TestContext.DataRow["AddrENT"].ToString());
+            // Address Entrance 
+            option.InputText("RepresentativeAddressEntrance", option.metadata("AddrENT"));
 
-            //Postal code 
-             option.InputText("RepresentativeAddressPostalCode", TestContext.DataRow["repPcode"].ToString());
+            // Postal code 
+            option.InputText("RepresentativeAddressPostalCode", option.metadata("repPcode"));
 
-            //Representative Address Line 1 
-             option.InputText("RepresentativeAddressLine1", TestContext.DataRow["repAdrline1"].ToString());
+            // Representative Address Line 1 
+            option.InputText("RepresentativeAddressLine1", option.metadata("repAdrline1"));
 
-            //Representative Address Line 2  
-             option.InputText("RepresentativeAddressLine2", TestContext.DataRow["repAdrline2"].ToString());
+            // Representative Address Line 2  
+            option.InputText("RepresentativeAddressLine2", option.metadata("repAdrline2"));
 
-            //Click button Next
+            // Click button Next
             option.WaitForExists(next);
             option.button(option.Text(next));
 
-            //Activity Type *
-             option.lookup("ActivityType", 1);
+            // Activity Type
+            option.lookup("ActivityType", 1);
 
-            //Click Add Product
+            // Click Add Product
             string addProduct = "div.panel-header.grid-header button";
             option.WaitForExists(addProduct);
             option.button(option.Text(addProduct));
 
-            //Name 
-             option.InputText("Name", TestContext.DataRow["name"].ToString());
+            // Name 
+            option.InputText("Name", option.metadata("name"));
 
-            //District *
-             option.lookup("DistrictId", 2);
+            // District
+            option.lookup("DistrictId", 2);
 
-            //City
-             option.lookup("CityId", 2);
+            // City
+            option.lookup("CityId", 2);
 
-            //Sector
-             option.lookup("SectorId", 2);
+            // Sector
+            option.lookup("SectorId", 2);
 
-            //Street
-             option.lookup("StreetId", 2);
+            // Street
+            option.lookup("StreetId", 2);
 
-            //House
-             option.InputText("House", TestContext.DataRow["fHouse"].ToString());
+            // House
+            option.InputText("House", option.metadata("fHouse"));
 
-            //Block
-             option.InputText("Block", TestContext.DataRow["fBlook"].ToString());
+            // Block
+            option.InputText("Block", option.metadata("fBlook"));
 
-            //Apartment
-             option.InputText("Apartment", TestContext.DataRow["fApartm"].ToString());
+            // Apartment
+            option.InputText("Apartment", option.metadata("fApartm"));
 
-            //Active *
+            // Active *
             option.Combobox("Active", 0);
 
             string saveCl = "div.modal-footer div.basic-commands > button:nth-child(2)";
             option.WaitForExists(saveCl);
             option.button(option.Text(saveCl));
 
-            Playback.Wait(1000);
 
-            //Click button Next
+            // Click button Next
             string next1 = "div.process-buttons.pull-right > div > button:nth-child(2)";
             option.WaitForExists(next1);
             option.button(option.Text(next1));
 
-            //*****Supporting Documents************//
 
-            //Click Button Edit(4)
+
+
+            // Click Button Edit(4)
             option.editBtn(4);
-          
-            //Select img and open
+
+            // Select img and open
             option.selectIMG();
 
-            //title
-             option.InputText("Title", TestContext.DataRow["Title"].ToString());
+            // Title
+            option.InputText("Title", option.metadata("Title"));
 
-            //Click Save and Close
+            // Click Save and Close
             string saveClose = "div.modal-footer div.basic-commands > button:nth-child(2)";
             option.WaitForExists(saveClose);
             option.button(option.Text(saveClose));
 
-            Playback.Wait(1000);
 
-            //Click button Next
+            // Click button Next
             string next2 = "div.process-buttons.pull-right > div > button:nth-child(2)";
             option.WaitForExists(next2);
             option.button(option.Text(next2));
 
-            //Click button Next
+            // Click button Next
             string next3 = "div.process-buttons.pull-right > div > button:nth-child(2)";
             option.WaitForExists(next3);
             option.button(option.Text(next3));
 
-            //Request Delivery 
-             option.lookup("RequestDelivery", 1);
 
-            //Click Confirm
+            // Request Delivery 
+            option.lookup("RequestDelivery", 1);
+
+            // Click Confirm
             string confirm = "div.process-buttons.pull-right > div > button:nth-child(2)";
             option.WaitForExists(confirm);
             option.button(option.Text(confirm));
 
-            //CaseRember
+
+            // CaseRember
             string caseNr = "#CaseNumber";
             option.WaitForExists(caseNr);
             var caseRember = option.Value(caseNr);
 
-            //Click Finish
+            // Click Finish
             string finish = "div.basic-commands > button";
             option.WaitForExists(finish);
             option.button(option.Text(finish));
 
-            //Click Confirm
+
+            // Click Confirm
             string confirm1 = "div.basic-commands > button";
             option.WaitForExists(confirm1);
             option.button(option.Text(confirm1));
@@ -301,28 +302,28 @@ namespace TestareManual
 
         #region Additional test attributes
 
-        // You can use the following additional attributes as you write your tests:
+        //  You can use the following additional attributes as you write your tests:
 
-        ////Use TestInitialize to run code before running each test 
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
+        // // Use TestInitialize to run code before running each test 
+        // [TestInitialize()]
+        // public void MyTestInitialize()
+        // {        
+        //     //  To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+        // }
 
-        ////Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
+        // // Use TestCleanup to run code after each test has run
+        // [TestCleanup()]
+        // public void MyTestCleanup()
+        // {        
+        //     //  To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+        // }
 
         #endregion
 
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
+        /// Gets or sets the test context which provides
+        /// information about and functionality for the current test run.
+        /// </summary>
         public TestContext TestContext
         {
             get

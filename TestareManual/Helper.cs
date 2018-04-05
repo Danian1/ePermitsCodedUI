@@ -18,12 +18,15 @@ namespace TestareManual
     public class Helper
     {
         private BrowserWindow browser;
-        public Helper(string targetBrowser, string uri, Boolean maximized)
+        private TestContext testContext;
+
+        public Helper(string targetBrowser, string uri, Boolean maximized, TestContext testContext)
         {
             BrowserWindow.CurrentBrowser = targetBrowser;
             BrowserWindow browser = BrowserWindow.Launch(uri);
             browser.Maximized = true;
             this.browser = browser;
+            this.testContext = testContext;
         }
 
         [TestMethod]
@@ -32,6 +35,10 @@ namespace TestareManual
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
         }
 
+        public string metadata(string metaName)
+        {
+            return this.testContext.DataRow[metaName].ToString();
+        }
 
         public string Text(string selector)
         {
@@ -55,13 +62,19 @@ namespace TestareManual
             Mouse.Click(btnV);
 
         }
+
         public void InputText(string id, string text)
         {
+
             var input = new HtmlEdit(this.browser);
             input.SearchProperties.Add(HtmlEdit.PropertyNames.Id, id);
             input.WaitForControlExist(1000);
-            input.Text = text;
+            if (input.Text == "")
+            {
+                input.Text = text;
+            }
         }
+
         public void button(string text)
         {
             var btn = new HtmlButton(this.browser);
@@ -69,6 +82,7 @@ namespace TestareManual
             btn.WaitForControlExist(1000);
             Mouse.Click(btn);
         }
+
         public void choose(string text)
         {
             var btn = new HtmlLabel(this.browser);
@@ -76,12 +90,14 @@ namespace TestareManual
             btn.WaitForControlExist(1000);
             Mouse.Click(btn);
         }
+
         public void links(string text)
         {
             var link = new HtmlHyperlink(this.browser);
             link.SearchProperties.Add(HtmlHyperlink.PropertyNames.InnerText, text);
             Mouse.Click(link);
         }
+
         public void lookup(string id, int row)
         {
             var spn = new HtmlEdit(this.browser);
@@ -94,6 +110,7 @@ namespace TestareManual
             text.WaitForControlExist();
             Mouse.DoubleClick(text);
         }
+
         public void DateSelect(string id, int data)
         {
             var dataB = new HtmlEdit(this.browser);
@@ -106,6 +123,7 @@ namespace TestareManual
             slData.WaitForControlExist(1000);
             Mouse.Click(slData);
         }
+
         public void Combobox(string id, int value)
         {
             var combo = new HtmlComboBox(this.browser);
@@ -113,6 +131,7 @@ namespace TestareManual
             combo.WaitForControlExist(1000);
             combo.SelectedIndex = value;
         }
+
         public void editBtn(int pos)
         {
             var edit = new HtmlButton(this.browser);
@@ -121,6 +140,7 @@ namespace TestareManual
             Mouse.Click(edit);
 
         }
+
         public void selectIMG()
         {
             var btnChoose = new HtmlLabel(this.browser);
@@ -128,11 +148,11 @@ namespace TestareManual
             btnChoose.WaitForControlExist();
             Mouse.Click(btnChoose);
 
-            string x = TestContext.DeploymentDirectory;
-            string[] rows = x.Split(new string[] { "TestResults" }, StringSplitOptions.None);
+            string x = this.testContext.DeploymentDirectory;
+            string[] rows = PathIMG(x);
             String TestProjectPath = rows[0].ToString() + @"TestareManual\Resources\test.jpg";
 
-            WinWindow UploadWindow = new WinWindow(this.browser);
+            WinWindow UploadWindow = new WinWindow();
             UploadWindow.SearchProperties.Add("Name", "Open");
             UploadWindow.WaitForControlExist();
 
@@ -142,12 +162,16 @@ namespace TestareManual
 
             Keyboard.SendKeys("{Enter}");
         }
+
+        private static string[] PathIMG(string x) => x.Split(new string[] { "TestResults" }, options: StringSplitOptions.None);
+
         public void clickLabel(string id)
         {
             var lab = new HtmlSpan(this.browser);
             lab.SearchProperties.Add(HtmlSpan.PropertyNames.Id, id);
             Mouse.Click(lab);
         }
+
         public void clickChangeRole()
         {
             var role = new HtmlHyperlink(this.browser);
@@ -157,6 +181,7 @@ namespace TestareManual
             role.WaitForControlReady();
             Mouse.Click(role);
         }
+
         public void changeRole(string name)
         {
             var chRole = new HtmlRadioButton(this.browser);
@@ -164,6 +189,7 @@ namespace TestareManual
             chRole.WaitForControlExist();
             Mouse.Click(chRole);
         }
+
         public void CaseClick(string text)
         {
             var cases = new HtmlCell(this.browser);
@@ -172,6 +198,7 @@ namespace TestareManual
             Mouse.Click(cases);
             Mouse.DoubleClick(cases);
         }
+
         public void Modalbtn(string text)
         {
             var nextBTN = new HtmlCustom(this.browser);
@@ -180,6 +207,7 @@ namespace TestareManual
             nextBTN.WaitForControlExist();
             Mouse.Click(nextBTN);
         }
+
         public void txtTextarea(string text)
         {
             var textarea = new HtmlTextArea(this.browser);
@@ -188,6 +216,7 @@ namespace TestareManual
             textarea.WaitForControlExist();
             textarea.Text = text;
         }
+
         #region Additional test attributes
 
         // You can use the following additional attributes as you write your tests:
@@ -209,9 +238,9 @@ namespace TestareManual
         #endregion
 
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
+        /// Gets or sets the test context which provides
+        /// information about and functionality for the current test run.
+        /// </summary>
         public TestContext TestContext
         {
             get
